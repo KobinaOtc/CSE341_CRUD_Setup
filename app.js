@@ -30,4 +30,10 @@ mongodb.initDb((err) => {
 
 app.use('/', router);
 
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(err.status || 500).json({
+        message: err.message || 'Something went wrong on the server!',
+    });
+})
 // app.listen(PORT, () => {console.log(`Running on port: ${PORT}`)});
