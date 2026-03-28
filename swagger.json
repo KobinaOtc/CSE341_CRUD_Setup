@@ -5,7 +5,7 @@
     "description": "API for managing users",
     "version": "1.0.0"
   },
-  "host": "https://cse341-crud-setup.onrender.com",
+  "host": "cse341-crud-setup.onrender.com",
   "basePath": "/",
   "schemes": [
     "https"
