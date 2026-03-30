@@ -1,21 +1,45 @@
 const express = require('express');
 const router = require('./routes');
 const bodyParser = require('body-parser')
+const session = require('express-session');
+const passport = require('passport');
+const GithubStrategy = require('passport-github2').Strategy;
 const PORT = process.env.PORT || 8080;
 
 const mongodb = require('./data/database');
 const app = express();
 
 app.use(bodyParser.json());
-app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader(
-        'Access-Control-Allow-Headers', 
-        'Origin, X-Requested-With, Content-Type, Accept, Z-Key'
-    );
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-    next();
+
+// Set up express-session
+app.use(session({
+    secret: 'secret', // In production, make this a random string
+    resave: false,
+    saveUninitialized: true,
+}));
+
+// Initialize passport and tie it to the session
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Passport serialization/deserialization setup
+passport.serializeUser((user, done) => {
+    done(null, user);
 });
+
+passport.deserializeUser((user, done) => {
+    done(null, user);
+});
+
+// app.use((req, res, next) => {
+//     res.setHeader('Access-Control-Allow-Origin', '*');
+//     res.setHeader(
+//         'Access-Control-Allow-Headers', 
+//         'Origin, X-Requested-With, Content-Type, Accept, Z-Key'
+//     );
+//     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+//     next();
+// });
 
 mongodb.initDb((err) => {
     if (err) {
