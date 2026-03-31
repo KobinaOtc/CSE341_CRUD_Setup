@@ -31,7 +31,7 @@ router.get('/', (req, res) => {
     res.send("Home page listening");
 });
 
-router.get('/oauth-callback', (req, res) => {
+router.get('/github/callback', (req, res) => {
     res.send('logged in');
 })
 
