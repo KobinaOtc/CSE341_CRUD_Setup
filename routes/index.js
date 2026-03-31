@@ -3,7 +3,7 @@ const router = require('express').Router();
 const passport = require('passport');
 
 router.use('/fossils', require('./fossils'));
-router.use('/', require('./swagger')); 
+router.use('/api-docs', require('./swagger')); 
 
 // Auth routes
 
@@ -21,6 +21,7 @@ router.get('/logout', function(req,res, next) {
 router.get('/github/callback', passport.authenticate('github', {
     failureRedirect: '/api-docs', session: false
 }), (req, res) => {
+    console.log("GITHUB USER DATA:", req.user);
     // Successful authentication
     req.session.user = req.user; // Set the useron the session object
     res.redirect('/');

@@ -12,14 +12,11 @@
     "https"
   ],
   "securityDefinitions": {
-    "oAuthSamaple": {
+    "githubOAuth": {
       "type": "oauth2",
       "authorizationUrl": "https://github.com/login/oauth/authorize",
       "flow": "implicit",
-      "scopes": {
-        "read_pets": "read your pets",
-        "write_pets": "modify pets in your account"
-      }
+      "scopes": {}
     }
   },
   "paths": {
@@ -242,7 +239,7 @@
         }
       }
     },
-    "/api-docs": {
+    "/api-docs/api-docs": {
       "get": {
         "description": "",
         "responses": {

@@ -7,24 +7,18 @@ const doc = {
     },
     host: 'localhost:8080',
     schemes: ['http', 'https'],
-
-    // Add security definistions below
+    // 1. ADD THIS BLOCK to define the security strategy
     securityDefinitions: {
-        oAuthSamaple: {
+        githubOAuth: {
             type: 'oauth2',
             authorizationUrl: 'https://github.com/login/oauth/authorize',
             flow: 'implicit',
-            scopes: {
-                'read_pets': 'read your pets',
-                'write_pets': 'modify pets in your account'
-            }
+            scopes: {}
         }
     }
 };
 
 const outputFile = './swagger.json';
-const endpointsFiles = ['./app.js'];
+const endpointsFiles = ['./routes/index.js'];
 
-swaggerAutogen(outputFile, endpointsFiles, doc).then(() => {
-    require('./app.js'); // Your project's root file
-});
+swaggerAutogen(outputFile, endpointsFiles, doc).then(() => {});
