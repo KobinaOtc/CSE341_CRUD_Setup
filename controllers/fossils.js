@@ -2,6 +2,7 @@ const mongodb =require('../data/database');
 const { ObjectId } = require('mongodb');
 
 const getAll = async (req, res) => {
+    // #swagger.tags = ['fossils']
     const db = mongodb.getDb();
     console.log('Database connection: ', db.databaseName);
     const result = await mongodb.getDb().collection('fossils').find();
@@ -12,6 +13,7 @@ const getAll = async (req, res) => {
 }
 
 const getSingle = async (req, res) => {
+    // #swagger.tags = ['fossils']
     const userId = new ObjectId(req.params.id);
     const result = await mongodb.getDb().collection('fossils').findOne({ _id: userId });
     if(!result) {
@@ -23,6 +25,7 @@ const getSingle = async (req, res) => {
 };
 
 const createFossil = async (req, res) => {
+    // #swagger.tags = ['fossils']
     const newFossil = {
         name: req.body.name,
         scientificName: req.body.scientificName,
@@ -42,6 +45,7 @@ const createFossil = async (req, res) => {
 };
 
 const updateFossil = async (req, res) => {
+    // #swagger.tags = ['fossils']
     const fossilId = new ObjectId(req.params.id);
     const newFossil = {
         name: req.body.name,
@@ -62,6 +66,7 @@ const updateFossil = async (req, res) => {
 };
 
 const deleteFossil = async (req, res) => {
+    // #swagger.tags = ['fossils']
     const fossilId = new ObjectId(req.params.id);
     const response = await mongodb.getDb().collection('fossils').deleteOne({ _id: fossilId });
     if (response.deletedCount > 0) {

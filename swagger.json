@@ -22,7 +22,10 @@
   "paths": {
     "/login": {
       "get": {
-        "description": "",
+        "tags": [
+          "OAuth"
+        ],
+        "description": "Login via GitHub",
         "responses": {
           "default": {
             "description": ""
@@ -32,7 +35,10 @@
     },
     "/logout": {
       "get": {
-        "description": "",
+        "tags": [
+          "OAuth"
+        ],
+        "description": "Logout and clear session",
         "responses": {
           "default": {
             "description": ""
@@ -42,16 +48,22 @@
     },
     "/github/callback": {
       "get": {
+        "tags": [
+          "OAuth"
+        ],
         "description": "",
         "responses": {
-          "200": {
-            "description": "OK"
+          "default": {
+            "description": ""
           }
         }
       }
     },
     "/": {
       "get": {
+        "tags": [
+          "general"
+        ],
         "description": "",
         "responses": {
           "200": {
@@ -62,6 +74,9 @@
     },
     "/fossils/": {
       "get": {
+        "tags": [
+          "fossils"
+        ],
         "description": "",
         "produces": [
           "application/json"
@@ -73,6 +88,9 @@
         }
       },
       "post": {
+        "tags": [
+          "fossils"
+        ],
         "description": "",
         "parameters": [
           {
@@ -127,6 +145,9 @@
     },
     "/fossils/{id}": {
       "get": {
+        "tags": [
+          "fossils"
+        ],
         "description": "",
         "produces": [
           "application/json"
@@ -149,6 +170,9 @@
         }
       },
       "put": {
+        "tags": [
+          "fossils"
+        ],
         "description": "",
         "parameters": [
           {
@@ -207,6 +231,9 @@
         }
       },
       "delete": {
+        "tags": [
+          "fossils"
+        ],
         "description": "",
         "parameters": [
           {
