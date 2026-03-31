@@ -11,6 +11,17 @@
     "http",
     "https"
   ],
+  "securityDefinitions": {
+    "oAuthSamaple": {
+      "type": "oauth2",
+      "authorizationUrl": "https://github.com/login/oauth/authorize",
+      "flow": "implicit",
+      "scopes": {
+        "read_pets": "read your pets",
+        "write_pets": "modify pets in your account"
+      }
+    }
+  },
   "paths": {
     "/login": {
       "get": {
@@ -62,7 +73,7 @@
         }
       }
     },
-    "/fossils": {
+    "/fossils/": {
       "get": {
         "description": "",
         "produces": [
