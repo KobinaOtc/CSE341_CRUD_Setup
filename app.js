@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const router = require('./routes');
 const bodyParser = require('body-parser')
@@ -21,6 +22,18 @@ app.use(session({
 // Initialize passport and tie it to the session
 app.use(passport.initialize());
 app.use(passport.session());
+
+passport.use(new GithubStrategy({
+        clientID: process.env.GITHUB_CLIENT_ID,
+        clientSecret: process.env.GITHUB_CLIENT_SECRET,
+        callbackURL: process.env.GITHUB_CALLBACK_URL
+    },
+    function(accessToken, refreshToken, profile, done) {
+        // According to the video, we're keeping it simple and just returning the profile
+        // In a more complex app, you'd check your MongoDB for the user here using a 'findOrCreate' method
+        return done(null, profile);
+    }
+));
 
 // Passport serialization/deserialization setup
 passport.serializeUser((user, done) => {
