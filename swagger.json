@@ -62,7 +62,7 @@
         }
       }
     },
-    "/fossils/": {
+    "/fossils": {
       "get": {
         "description": "",
         "produces": [
