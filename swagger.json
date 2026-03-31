@@ -44,23 +44,13 @@
       "get": {
         "description": "",
         "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      }
-    },
-    "/": {
-      "get": {
-        "description": "",
-        "responses": {
           "200": {
             "description": "OK"
           }
         }
       }
     },
-    "/oauth-callback": {
+    "/": {
       "get": {
         "description": "",
         "responses": {
@@ -239,7 +229,7 @@
         }
       }
     },
-    "/api-docs/api-docs": {
+    "/api-docs/": {
       "get": {
         "description": "",
         "responses": {
