@@ -31,8 +31,8 @@ router.get('/', (req, res) => {
     res.send("Home page listening");
 });
 
-router.get('/github/callback', (req, res) => {
-    res.send('logged in');
-})
+// router.get('/github/callback', (req, res) => {
+//     res.send('logged in');
+// })
 
 module.exports = router;
