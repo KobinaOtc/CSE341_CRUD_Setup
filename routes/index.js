@@ -3,6 +3,7 @@ const router = require('express').Router();
 const passport = require('passport');
 
 router.use('/fossils', require('./fossils'));
+router.use('/researchers', require('./researchers'));
 router.use('/api-docs', require('./swagger')); 
 
 // Auth routes

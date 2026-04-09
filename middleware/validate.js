@@ -21,7 +21,18 @@ const validate = (req, res, next) => {
     return res.status(400).json({ errors: errors.array() });
 };
 
+const researcherValidationRules = () => {
+    return [
+        body('firstName').notEmpty().withMessage('First name is required'),
+        body('lastName').notEmpty().withMessage('Last name is required'),
+        body('institution').notEmpty().withMessage('Institution is required'),
+        body('specialty').notEmpty().withMessage('Specialty is required'),
+        body('yearsActive').isNumeric().withMessage('yearsActive must be a number'),
+    ];
+};
+
 module.exports = {
     fossilValidationRules,
+    researcherValidationRules,
     validate,
 }
