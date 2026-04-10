@@ -5,10 +5,9 @@
     "description": "API for managing users",
     "version": "1.0.0"
   },
-  "host": "localhost:8080",
+  "host": "cse-341-project1-mhlx.onrender.com",
   "basePath": "/",
   "schemes": [
-    "http",
     "https"
   ],
   "securityDefinitions": {
