@@ -5,8 +5,8 @@ const doc = {
         title: 'User API',
         description: 'API for managing users',
     },
-    host: 'localhost:8080',
-    schemes: ['http', 'https'],
+    host: 'cse341-crud-setup.onrender.com',
+    schemes: ['https'],
     // 1. ADD THIS BLOCK to define the security strategy
     securityDefinitions: {
         githubOAuth: {
