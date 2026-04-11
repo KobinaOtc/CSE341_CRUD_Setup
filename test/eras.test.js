@@ -26,4 +26,20 @@ describe('Eras API GET Routes', () => {
         
         expect(response.status).toBe(404);
     });
+
+    // Test 3: GET SINGLE - Now let's test with a real ID from the database to ensure it returns 200
+    it('should return a 200 status if the era ID is found', async () => {
+        const realId = '69da483474a7bc07bb460e36'; 
+        const response = await request(app).get(`/eras/${realId}`);
+        
+        expect(response.status).toBe(200);
+    });
+
+    // Test 4: GET SINGLE - Let's also test with an invalid ID format to ensure it returns 500
+    it('should return a 500 status if the era ID format is invalid', async () => {
+        const invalidId = 'invalid-id';
+        const response = await request(app).get(`/eras/${invalidId}`);
+        
+        expect(response.status).toBe(500);
+    });
 });
