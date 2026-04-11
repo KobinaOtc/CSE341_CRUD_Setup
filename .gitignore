@@ -3,3 +3,5 @@ package-lock.json
 .env
 fossil_data.json
 researcher_data.json
+digSites_data.json
+eras_data.json

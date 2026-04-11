@@ -4,7 +4,7 @@
   "description": "Crud API setup",
   "main": "app.js",
   "scripts": {
-    "test": "jest --forceExit",
+    "test": "jest --forceExit --detectOpenHandles",
     "start": "node server.js",
     "dev": "nodemon server.js",
     "git": "git add . && git commit -m \"update\" && git push"
