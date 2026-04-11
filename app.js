@@ -58,12 +58,15 @@ mongodb.initDb((err) => {
     if (err) {
         console.log('Unable to connect to MongoDB. Error: ', err);
     } else {
-        app.listen(PORT, () => {
-            console.log(`Database is running and node is listening on port ${PORT}`);
-        });
-        console.log('Connected to MongoDB.')
+        // Only listen on the port if we are NOT running tests
+        if (process.env.NODE_ENV !== 'test') {
+            app.listen(PORT, () => {
+                console.log(`Database is running and node is listening on port ${PORT}`);
+            });
+        }
+        console.log('Connected to MongoDB.');
     }
-})
+});
 
 app.use('/', router);
 
@@ -74,3 +77,4 @@ app.use((err, req, res, next) => {
     });
 })
 // app.listen(PORT, () => {console.log(`Running on port: ${PORT}`)});
+module.exports = app;
