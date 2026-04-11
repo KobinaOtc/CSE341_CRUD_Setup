@@ -31,8 +31,30 @@ const researcherValidationRules = () => {
     ];
 };
 
+const digSiteValidationRules = () => {
+    return [
+        body('siteName').notEmpty().withMessage('Site name is required'),
+        body('country').notEmpty().withMessage('Country is required'),
+        body('region').notEmpty().withMessage('Region is required'),
+        body('geologicalFormation').notEmpty().withMessage('Geological formation is required'),
+        body('yearDiscovered').isNumeric().withMessage('Year discovered must be a number'),
+    ];
+};
+
+const eraValidationRules = () => {
+    return [
+        body('name').notEmpty().withMessage('Name is required'),
+        body('startAgeMillions').isNumeric().withMessage('Start age must be a number'),
+        body('endAgeMillions').isNumeric().withMessage('End age must be a number'),
+        body('majorEvents').notEmpty().withMessage('Major events description is required'),
+        body('climate').notEmpty().withMessage('Climate description is required'),
+    ];
+};
+
 module.exports = {
     fossilValidationRules,
     researcherValidationRules,
+    digSiteValidationRules,
+    eraValidationRules,
     validate,
 }
